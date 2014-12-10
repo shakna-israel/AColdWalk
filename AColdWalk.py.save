@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+import os
+import time
+
+global var_warmth
+global var_wood
+global var_health
+global var_food
+global var_anxiety
+global username
+
+def clear():
+    os.system(['clear','cls'][os.name == 'nt'])
+
+def init():
+    global var_warmth 
+    var_warmth = 50
+    global var_wood
+    var_wood = 100
+    global var_health
+    var_health = 100
+    global var_food
+    var_food = 80
+    global var_anxiety
+    var_anxiety = 10
+
+def fetch_status():
+    print "Body Warmth: " + str(var_warmth) + "%"
+    print "Wood Stockpile: " + str(var_wood) + "%"
+    print "Health: " + str(var_health) + "%"
+    print "Food Stockpile: " + str(var_food) + "%"
+    print "Anxiety Level: " + str(var_anxiety) + "%"
+
+def stokeFire():
+    print "The fire warms the room."
+    global 
+
+clear()
+print "A Cold Walk"
+time.sleep(1)
+print ""
+print ""
+print "jm | Design"
+time.sleep(1)
+clear()
+print "Loading"
+time.sleep(1)
+clear()
+print "Loading."
+time.sleep(1)
+clear()
+print "Loading.."
+time.sleep(1)
+clear()
+print "Loading..."
+time.sleep(1)
+clear()
+init()
+print "... What is your name?"
+global username
+username = raw_input("... ")
+clear()
+print "It all happened on a cold day in July."
+print ""
+print "... I mean a REALLY cold day."
+print "The rain would move to hail and back without warning."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+print "The rain just kept coming down, and the day kept getting colder."
+print ""
+print ""
+print "... The cabin I, " + username + ", was staying in... I guess you could say it wasn't going to stay in one piece much longer."
+print raw_input("Press enter to continue.")
+clear()
+fetch_status()
+print raw_input("Press enter to continue.")
