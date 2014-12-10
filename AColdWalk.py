@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import time
+import random
 
 global var_warmth
 global var_wood
@@ -8,12 +9,14 @@ global var_health
 global var_food
 global var_anxiety
 global username
+global stranger
+global friend
 
 def clear():
     os.system(['clear','cls'][os.name == 'nt'])
 
 def init():
-    global var_warmth 
+    global var_warmth
     var_warmth = 50
     global var_wood
     var_wood = 100
@@ -23,6 +26,10 @@ def init():
     var_food = 80
     global var_anxiety
     var_anxiety = 10
+    global stranger
+    stranger = 0
+    global friend
+    friend = 0
 
 def fetch_status():
     print "Body Warmth: " + str(var_warmth) + "%"
@@ -59,23 +66,66 @@ def checkValues():
         var_anxiety = 100
     if var_anxiety <= 0:
         var_anxiety = 0
+    global stranger
+    if stranger >= 1:
+        var_anxiety = var_anxiety + random.randint(0, 5)
+    global friend
+    if friend >= 1:
+        var_anxiety = var_anxiety - friend
 
 def stokeFire():
+    clear()
     print "The fire warms the room."
     global var_wood
-    var_wood = var_wood - 10
+    var_wood = var_wood - random.randint(0,10)
     global var_warmth
-    var_warmth = var_warmth + 10
-    checkValues()
+    var_warmth = var_warmth + random.randint(0,10)
 
 def gatherWood():
+    clear()
     print "It's freezing out here!"
     print "... Lucky there's so much bracken."
     global var_wood
-    var_wood = var_wood + 10
+    var_wood = var_wood + random.randint(0,10)
     global var_warmth
-    var_warmth = var_warmth - 10
+    var_warmth = var_warmth - random.randint(0,10)
+
+def save():
+    file = open("save.var", "w")
+    file.write(newLine)
+    #Some sort of for loop?
+    file.close()
+
+def load():
+    file = open("save.var", "r")
+    filedata = file.read()
+    #Some sort of for loop? Or specific lines meaning specific variables?
+    file.close()
+
+def actionChoice():
     checkValues()
+    clear()
+    fetch_status()
+    print "Enter A to stoke the fire."
+    print "Enter B to gather more wood."
+    choice_active = 1
+    while (choice_active == 1):
+        choice = raw_input("... ")
+        if choice == 'A':
+            stokeFire()
+            choice_active = 0
+        elif choice == 'a':
+            stokeFire()
+            choice_active = 0
+        elif choice == 'B':
+            gatherWood()
+            choice_active = 0
+        elif choice == 'b':
+            gatherWood()
+            choice_active = 0
+        continue
+    print raw_input("Press enter to continue.")
+    clear()
 
 clear()
 print "A Cold Walk"
@@ -117,18 +167,6 @@ print "... The cabin I, " + username + ", was staying in... I guess you could sa
 print raw_input("Press enter to continue.")
 clear()
 fetch_status()
-print "Enter A to stoke the fire."
-print "Enter B to gather more wood."
-choice_active = 1
-choice = raw_input("... "
-while (choice_active == 1):
-    if choice == A:
-         stokeFire()
-         choice_active = 0
-    else
-        gatherWood()
-        choice_active = 0
-print raw_input("Press enter to continue.")
-clear()
-fetch_status()
-print raw_input("Press enter to continue.")
+loop = 1
+while loop == 1:
+    actionChoice()
