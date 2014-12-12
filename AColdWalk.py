@@ -75,20 +75,50 @@ def checkValues():
 
 def stokeFire():
     clear()
-    print "The fire warms the room."
-    global var_wood
-    var_wood = var_wood - random.randint(0,10)
-    global var_warmth
-    var_warmth = var_warmth + random.randint(0,10)
+    if friend < 0:
+        print "The fire warms the room."
+        global var_wood
+        var_wood = var_wood - random.randint(0,10)
+        global var_warmth
+        var_warmth = var_warmth + random.randint(0,10)
+    if friend == 1:
+        print "The cold brings friends together."
+        global var_wood
+        var_wood = var_wood - random.randint(0,5)
+        global var_warmth
+        var_warmth + random.randint(5,10)
+    if friend > 1:
+        print "Nothing is warmer than friendship."
+        global var_wood
+        global friend
+        friend_multiplier = friend * random.randint(0,10)
+        friend_divider = friend / random.randint(0,10)
+        var_wood = var_wood - random.randint(0,friend_divider)
+        global var_warmth
+        var_warmth + random.randint(friend_multiplier,friend_multiplier)
 
 def gatherWood():
     clear()
-    print "It's freezing out here!"
-    print "... Lucky there's so much bracken."
-    global var_wood
-    var_wood = var_wood + random.randint(0,10)
-    global var_warmth
-    var_warmth = var_warmth - random.randint(0,10)
+    if friend < 0:
+        print "It's freezing out here!"
+        print "... Lucky there's so much bracken."
+        global var_wood
+        var_wood = var_wood + random.randint(0,10)
+        global var_warmth
+        var_warmth = var_warmth - random.randint(0,10)
+    if friend == 1:
+        print "It might be cold, but at least you have company."
+        global var_wood
+        var_wood = var_wood + random.randint(5,10)
+        global var_warmth
+        var_warmth = var_warmth - random.randint(0,10)
+    if friend > 1:
+        print "Many hands make light work."
+        global var_wood
+        global friend
+        var_wood = var_wood + random.randint(0,friend)
+        global var_warmth
+        var_warmth = var_warmth - random.randint(0,10)
 
 def save():
     file = open("save.var", "w")
@@ -106,8 +136,15 @@ def actionChoice():
     checkValues()
     clear()
     fetch_status()
-    print "Enter A to stoke the fire."
-    print "Enter B to gather more wood."
+    if friend < 1:
+        print "Enter A to stoke the fire."
+        print "Enter B to gather more wood."
+    elif friend == 1:
+        print "Enter A to snuggle by the fire."
+        print "Enter B to gather wood together."
+    elif friend >= 1:
+        print "Enter A to group by the fire."
+        print "Enter B to gather wood together."
     choice_active = 1
     while (choice_active == 1):
         choice = raw_input("... ")
@@ -123,7 +160,6 @@ def actionChoice():
         elif choice == 'b':
             gatherWood()
             choice_active = 0
-        continue
     print raw_input("Press enter to continue.")
     clear()
 
