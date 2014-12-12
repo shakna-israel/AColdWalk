@@ -286,6 +286,7 @@ print ""
 print ""
 print raw_input("Press enter to continue.")
 clear()
+loop = random.randint(0,50)
 while loop > 1:
     loop = loop - 1
     actionChoice()
@@ -301,6 +302,7 @@ stranger = stranger - 1
 global friend
 friend = friend + 1
 clear()
+loop = random.randint(0,100)
 while loop > 1:
     loop = loop - 1
     actionChoice()
