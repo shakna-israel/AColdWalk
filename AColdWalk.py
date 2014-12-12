@@ -75,7 +75,7 @@ def checkValues():
 
 def stokeFire():
     clear()
-    if friend < 0:
+    if friend < 1:
         print "The fire warms the room."
         global var_wood
         var_wood = var_wood - random.randint(0,10)
@@ -99,7 +99,7 @@ def stokeFire():
 
 def gatherWood():
     clear()
-    if friend < 0:
+    if friend < 1:
         print "It's freezing out here!"
         print "... Lucky there's so much bracken."
         global var_wood
@@ -253,3 +253,21 @@ loop = random.randint(0,20)
 while loop > 1:
     loop = loop - 1
     actionChoice()
+clear()
+print "The stranger by the fire is waking up..."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+global var_anxiety
+var_anxiety = var_anxiety + var_anxiety
+fetch_status()
+print ""
+print "The stranger turns to me and smiles weakly... "
+print ""
+print raw_input("Press enter to continue.")
+clear()
+var_anxiety = var_anxiety + var_anxiety
+fetch_status()
+print ""
+print "The stranger turns to me and smiles weakly... and aplogises."
