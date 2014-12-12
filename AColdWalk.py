@@ -203,6 +203,53 @@ print "... The cabin I, " + username + ", was staying in... I guess you could sa
 print raw_input("Press enter to continue.")
 clear()
 fetch_status()
-loop = 1
-while loop == 1:
+loop = random.randint(0,20)
+while loop > 1:
+    loop = loop - 1
+    actionChoice()
+clear()
+print "The wind has picked up, the cabin is really not liking it."
+print ""
+print "Is it hailing again?"
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+print "Oh hell..."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+print "Oh hell..."
+print ""
+print "There's someone at the door..."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+print "I..."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+print "I... I guess I can't leave them out there."
+print ""
+print "Not in this weather."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+print "I opened the door, and the stranger stumbled in."
+global stranger
+stranger = 1
+print ""
+print "They collapsed by the fire and passed out..."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+fetch_status()
+loop = random.randint(0,20)
+while loop > 1:
+    loop = loop - 1
     actionChoice()
