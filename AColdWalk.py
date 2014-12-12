@@ -32,6 +32,7 @@ def init():
     friend = 0
 
 def fetch_status():
+    checkValues()
     print "Body Warmth: " + str(var_warmth) + "%"
     print "Wood Stockpile: " + str(var_wood) + "%"
     print "Health: " + str(var_health) + "%"
@@ -271,3 +272,36 @@ var_anxiety = var_anxiety + var_anxiety
 fetch_status()
 print ""
 print "The stranger turns to me and smiles weakly... and aplogises."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+var_anxiety = random.randint(0,20)
+fetch_status()
+print ""
+print "They say their name is Amanda Lovine. They got caught in the storm."
+global username
+print "I say my name is " + username
+print "Amanda says she can help with the wood and the fire."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+clear()
+while loop > 1:
+    loop = loop - 1
+    actionChoice()
+clear()
+print "After all that, Amanda and I?"
+print ""
+print "We're friends."
+print ""
+print ""
+print raw_input("Press enter to continue.")
+global stranger
+stranger = stranger - 1
+global friend
+friend = friend + 1
+clear()
+while loop > 1:
+    loop = loop - 1
+    actionChoice()
+clear()
