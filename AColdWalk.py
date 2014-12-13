@@ -184,6 +184,11 @@ clear()
 print "Loading..."
 time.sleep(1)
 clear()
+print "Enter 1 to load."
+print "Enter 2 for a New Game."
+load = raw_input ("Press enter to continue.")
+if load == 1:
+	load()
 init()
 print "... What is your name?"
 global username
