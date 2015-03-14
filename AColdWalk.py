@@ -12,6 +12,8 @@ global username
 global stranger
 global friend
 global event
+global debug
+debug = 'false' # Debug is set in individual functions!
 event = 0
 
 def clear():
@@ -74,7 +76,8 @@ def checkValues():
         var_anxiety = var_anxiety + random.randint(0, 5)
     global friend
     if friend >= 1:
-        var_anxiety = var_anxiety - friend
+        #var_anxiety = var_anxiety - friend
+        print "Friend reassurance not implemented."
 
 def stokeFire():
     clear()
@@ -165,8 +168,11 @@ def load_game():
     global friend
     global event
     global load
-    print "Loading..."
+    if debug == 'true':
+         print "Load start"
     load = 'true'
+    if debug == 'true':
+         print "Load set to..." + load
     var_warmth = 0
     var_wood = 0
     var_health = 0
@@ -176,11 +182,15 @@ def load_game():
     stranger = 0
     friend = 0
     event = 0
+    if debug == 'true':
+        print "Values instantiated."
     file = open("save.var", "r")
     i = 0
     for line in file.read().split('\n'):
 	if i == 0:
             var_warmth = line
+            if debug == 'true':
+                print "var_warmth... " + var_warmth
         elif i == 1:
             var_wood = line
         elif i == 2:
@@ -197,8 +207,15 @@ def load_game():
             friend = line
         elif i == 8:
             event = line
+            if debug == 'true':
+                print "event set to... " + event
         i = i + 1
     file.close()
+    if debug == 'true':
+        print "File closed."
+    if debug == 'true':
+	print "Attempting to start game_story()"
+    game_story()
 
 def actionChoice():
     checkValues()
@@ -249,16 +266,31 @@ def play_loop():
 def game_story():
     global load
     global event
+    debug = 'true'
     if load == 'true':
+        if debug == 'true':
+            print "Load is true."
     	if event == 'one':
-    		play_loop()
-    		event2()
-    		load = 0
+            if debug == 'true':
+            	print "Event is one."
+            play_loop()
+    	    event2()
+    	    load = 0
     	elif event == 'two':
-    		play_loop()
-    		event3()
-    		load = 0
+    	     if debug == 'true':
+                 print "Event is two"
+             play_loop()
+    	     event3()
+    	     load = 0
+        else:
+            if debug == 'true':
+                print "No event found in save. Preserving values are restarting function..."
+            global load
+            load = 'false'
+            game_story()
     else:
+        if debug == 'true':
+            print "Haven't found a specific event, continuing..."
 	play_loop()
     	event1()
     	play_loop()
@@ -414,6 +446,5 @@ while (choice_active == "active"):
     choice = raw_input("... ")
     if choice == '1':
         load_game()
-        game_story()
     elif choice == '2':
         new_game()
