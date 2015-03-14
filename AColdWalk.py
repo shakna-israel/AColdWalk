@@ -131,6 +131,7 @@ def save():
     global username
     global stranger
     global friend
+    global event
     file.write(str(var_warmth))
     file.write("\n")
     file.write(str(var_wood))
@@ -147,6 +148,8 @@ def save():
     file.write("\n")    
     file.write(str(friend))
     file.write("\n")
+    file.write(str(event))
+    file.write("\n")
     file.close()
 
 def load():
@@ -158,6 +161,7 @@ def load():
     global username
     global stranger
     global friend
+    global event
     var_warmth = 0
     var_wood = 0
     var_health = 0
@@ -166,6 +170,7 @@ def load():
     username = 0
     stranger = 0
     friend = 0
+    event = 0
     file = open("save.var", "r")
     i = 0
     for line in file.read().split('\n'):
@@ -185,6 +190,8 @@ def load():
             line = stranger
         elif i == 7:
             line = friend
+        elif i == 8:
+            line = event
         i = i + 1
     file.close()
 
@@ -256,6 +263,22 @@ while (choice_active == "active"):
     elif choice == '2':
         new_game()
 
+def play_loop():
+    clear()
+    fetch_status()
+    loop = random.randint(0,20)
+    while loop > 1:
+        loop = loop - 1
+        actionChoice()
+
+def game_story():
+    play_loop()
+    event1()
+    play_loop()
+    event2()
+    play_loop()
+    event3()
+
 def new_game():
     init()
     print "... What is your name?"
@@ -275,13 +298,7 @@ def new_game():
     print ""
     print "... The cabin I, " + username + ", was staying in... I guess you could say it wasn't going to stay in one piece much longer."
     print raw_input("Press enter to continue.")
-    clear()
-    fetch_status()
-    loop = random.randint(0,20)
-    while loop > 1:
-         loop = loop - 1
-         actionChoice()
-    event1()
+    game_story()
 
 def event1():
      clear()
