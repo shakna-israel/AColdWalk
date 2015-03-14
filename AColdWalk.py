@@ -123,7 +123,7 @@ def gatherWood():
         global var_warmth
         var_warmth = var_warmth - random.randint(0,10)
 
-def save():
+def save_game():
     file = open("save.var", "w")
     global var_warmth
     global var_wood
@@ -154,7 +154,7 @@ def save():
     file.write("\n")
     file.close()
 
-def load():
+def load_game():
     global var_warmth
     global var_wood
     global var_health
@@ -165,7 +165,8 @@ def load():
     global friend
     global event
     global load
-    load = '1'
+    print "Loading..."
+    load = 'true'
     var_warmth = 0
     var_wood = 0
     var_health = 0
@@ -179,26 +180,25 @@ def load():
     i = 0
     for line in file.read().split('\n'):
 	if i == 0:
-            line = var_warmth
+            var_warmth = line
         elif i == 1:
-            line = var_wood
+            var_wood = line
         elif i == 2:
-            line = var_health
+            var_health = line
         elif i == 3:
-            line = var_food
+            var_food = line
         elif i == 4:
-            line = var_anxiety
+            var_anxiety = line
         elif i == 5:
-            line = username
+            username = line
         elif i == 6:
-            line = stranger
+            stranger = line
         elif i == 7:
-            line = friend
+            friend = line
         elif i == 8:
-            line = event
+            event = line
         i = i + 1
     file.close()
-    game_story()
 
 def actionChoice():
     checkValues()
@@ -230,10 +230,10 @@ def actionChoice():
             gatherWood()
             choice_active = 0
         elif choice == 'S':
-            save()
+            save_game()
             print "Saved"
         elif choice == 's':
-            save()
+            save_game()
             print "Saved"
     print raw_input("Press enter to continue.")
     clear()
@@ -249,12 +249,12 @@ def play_loop():
 def game_story():
     global load
     global event
-    if load == '1':
-    	if event == '1':
+    if load == 'true':
+    	if event == 'one':
     		play_loop()
     		event2()
     		load = 0
-    	elif event == '2':
+    	elif event == 'two':
     		play_loop()
     		event3()
     		load = 0
@@ -413,6 +413,7 @@ choice_active = "active"
 while (choice_active == "active"):
     choice = raw_input("... ")
     if choice == '1':
-        load()
+        load_game()
+        game_story()
     elif choice == '2':
         new_game()
