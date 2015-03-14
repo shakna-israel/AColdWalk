@@ -11,6 +11,8 @@ global var_anxiety
 global username
 global stranger
 global friend
+global event
+event = 0
 
 def clear():
     os.system(['clear','cls'][os.name == 'nt'])
