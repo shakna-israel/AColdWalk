@@ -123,14 +123,61 @@ def gatherWood():
 
 def save():
     file = open("save.var", "w")
-    file.write(newLine)
-    #Some sort of for loop?
+    global var_warmth
+    global var_wood
+    global var_health
+    global var_food
+    global var_anxiety
+    global username
+    global stranger
+    global friend
+    file.write(str(var_warmth))
+    file.write("\n")
+    file.write(str(var_wood))
+    file.write("\n")
+    file.write(str(var_health))
+    file.write("\n")
+    file.write(str(var_food))
+    file.write("\n")
+    file.write(str(var_anxiety))
+    file.write("\n")
+    file.write(str(username))
+    file.write("\n")
+    file.write(str(stranger))
+    file.write("\n")    
+    file.write(str(friend))
+    file.write("\n")
     file.close()
 
 def load():
+    global var_warmth
+    global var_wood
+    global var_health
+    global var_food
+    global var_anxiety
+    global username
+    global stranger
+    global friend
     file = open("save.var", "r")
-    filedata = file.read()
-    #Some sort of for loop? Or specific lines meaning specific variables?
+    i = 0
+    for line in file.read().split('\n'):
+	if i == 0:
+            line = var_warmth
+        elif i == 1:
+            line = var_wood
+        elif i == 2:
+            line = var_health
+        elif i == 3:
+            line = var_food
+        elif i == 4:
+            line = var_anxiety
+        elif i == 5:
+            line = username
+        elif i == 6:
+            line = stranger
+        elif i == 7:
+            line = friend
+        i = i + 1
     file.close()
 
 def actionChoice():
@@ -146,6 +193,7 @@ def actionChoice():
     elif friend >= 1:
         print "Enter A to group by the fire."
         print "Enter B to gather wood together."
+    print "Enter S to save."
     choice_active = 1
     while (choice_active == 1):
         choice = raw_input("... ")
@@ -161,6 +209,12 @@ def actionChoice():
         elif choice == 'b':
             gatherWood()
             choice_active = 0
+        elif choice == 'S':
+            save()
+            print "Saved"
+        elif choice == 's':
+            save()
+            print "Saved"
     print raw_input("Press enter to continue.")
     clear()
 
@@ -186,129 +240,144 @@ time.sleep(1)
 clear()
 print "Enter 1 to load."
 print "Enter 2 for a New Game."
-load = raw_input ("Press enter to continue.")
-if load == 1:
-	load()
-init()
-print "... What is your name?"
-global username
-username = raw_input("... ")
-clear()
-print "It all happened on a cold day in July."
-print ""
-print "... I mean a REALLY cold day."
-print "The rain would move to hail and back without warning."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-print "The rain just kept coming down, and the day kept getting colder."
-print ""
-print ""
-print "... The cabin I, " + username + ", was staying in... I guess you could say it wasn't going to stay in one piece much longer."
-print raw_input("Press enter to continue.")
-clear()
-fetch_status()
-loop = random.randint(0,20)
-while loop > 1:
-    loop = loop - 1
-    actionChoice()
-clear()
-print "The wind has picked up, the cabin is really not liking it."
-print ""
-print "Is it hailing again?"
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-print "Oh hell..."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-print "Oh hell..."
-print ""
-print "There's someone at the door..."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-print "I..."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-print "I... I guess I can't leave them out there."
-print ""
-print "Not in this weather."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-print "I opened the door, and the stranger stumbled in."
-global stranger
-stranger = 1
-print ""
-print "They collapsed by the fire and passed out..."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-fetch_status()
-loop = random.randint(0,20)
-while loop > 1:
-    loop = loop - 1
-    actionChoice()
-clear()
-print "The stranger by the fire is waking up..."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-global var_anxiety
-var_anxiety = var_anxiety + var_anxiety
-fetch_status()
-print ""
-print "The stranger turns to me and smiles weakly... "
-print ""
-print raw_input("Press enter to continue.")
-clear()
-var_anxiety = var_anxiety + var_anxiety
-fetch_status()
-print ""
-print "The stranger turns to me and smiles weakly... and aplogises."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-var_anxiety = random.randint(0,20)
-fetch_status()
-print ""
-print "They say their name is Amanda Lovine. They got caught in the storm."
-global username
-print "I say my name is " + username
-print "Amanda says she can help with the wood and the fire."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-clear()
-loop = random.randint(0,50)
-while loop > 1:
-    loop = loop - 1
-    actionChoice()
-clear()
-print "After all that, Amanda and I?"
-print ""
-print "We're friends."
-print ""
-print ""
-print raw_input("Press enter to continue.")
-global stranger
-stranger = stranger - 1
-global friend
-friend = friend + 1
-clear()
-loop = random.randint(0,100)
-while loop > 1:
-    loop = loop - 1
-    actionChoice()
-clear()
+choice_active = "active"
+while (choice_active == "active"):
+    choice = raw_input("... ")
+    if choice == '1':
+        load()
+    elif choice == '2':
+        new_game()
+
+def new_game():
+    init()
+    print "... What is your name?"
+    global username
+    username = raw_input("... ")
+    clear()
+    print "It all happened on a cold day in July."
+    print ""
+    print "... I mean a REALLY cold day."
+    print "The rain would move to hail and back without warning."
+    print ""
+    print ""
+    print raw_input("Press enter to continue.")
+    clear()
+    print "The rain just kept coming down, and the day kept getting colder."
+    print ""
+    print ""
+    print "... The cabin I, " + username + ", was staying in... I guess you could say it wasn't going to stay in one piece much longer."
+    print raw_input("Press enter to continue.")
+    clear()
+    fetch_status()
+    loop = random.randint(0,20)
+    while loop > 1:
+         loop = loop - 1
+         actionChoice()
+    event1()
+
+def event1():
+     clear()
+     print "The wind has picked up, the cabin is really not liking it."
+     print ""
+     print "Is it hailing again?"
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     print "Oh hell..."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     print "Oh hell..."
+     print ""
+     print "There's someone at the door..."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     print "I..."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     print "I... I guess I can't leave them out there."
+     print ""
+     print "Not in this weather."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     print "I opened the door, and the stranger stumbled in."
+     global stranger
+     stranger = 1
+     print ""
+     print "They collapsed by the fire and passed out..."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     fetch_status()
+     loop = random.randint(0,20)
+     while loop > 1:
+         loop = loop - 1
+         actionChoice()
+     event2()
+
+def event2():
+     clear()
+     print "The stranger by the fire is waking up..."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     global var_anxiety
+     var_anxiety = var_anxiety + var_anxiety
+     fetch_status()
+     print ""
+     print "The stranger turns to me and smiles weakly... "
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     var_anxiety = var_anxiety + var_anxiety
+     fetch_status()
+     print ""
+     print "The stranger turns to me and smiles weakly... and aplogises."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     var_anxiety = random.randint(0,20)
+     fetch_status()
+     print ""
+     print "They say their name is Amanda Lovine. They got caught in the storm."
+     global username
+     print "I say my name is " + username
+     print "Amanda says she can help with the wood and the fire."
+     print ""
+     print ""
+     print raw_input("Press enter to continue.")
+     clear()
+     loop = random.randint(0,50)
+     while loop > 1:
+         loop = loop - 1
+         actionChoice()
+     clear()
+     event3()
+
+def event3():
+    print "After all that, Amanda and I?"
+    print ""
+    print "We're friends."
+    print ""
+    print ""
+    print raw_input("Press enter to continue.")
+    global stranger
+    stranger = stranger - 1
+    global friend
+    friend = friend + 1
+    clear()
+    loop = random.randint(0,100)
+    while loop > 1:
+        loop = loop - 1
+        actionChoice()
+    clear()
