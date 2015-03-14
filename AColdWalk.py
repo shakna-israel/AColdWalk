@@ -12,6 +12,37 @@ global username
 global stranger
 global friend
 
+# Global function for game intro
+clear()
+print "A Cold Walk"
+time.sleep(1)
+print ""
+print ""
+print "jm | Design"
+time.sleep(1)
+clear()
+print "Loading"
+time.sleep(1)
+clear()
+print "Loading."
+time.sleep(1)
+clear()
+print "Loading.."
+time.sleep(1)
+clear()
+print "Loading..."
+time.sleep(1)
+clear()
+print "Enter 1 to load."
+print "Enter 2 for a New Game."
+choice_active = "active"
+while (choice_active == "active"):
+    choice = raw_input("... ")
+    if choice == '1':
+        load()
+    elif choice == '2':
+        new_game()
+
 def clear():
     os.system(['clear','cls'][os.name == 'nt'])
 
@@ -162,6 +193,8 @@ def load():
     global stranger
     global friend
     global event
+    global load
+    load = '1'
     var_warmth = 0
     var_wood = 0
     var_health = 0
@@ -233,36 +266,6 @@ def actionChoice():
     print raw_input("Press enter to continue.")
     clear()
 
-clear()
-print "A Cold Walk"
-time.sleep(1)
-print ""
-print ""
-print "jm | Design"
-time.sleep(1)
-clear()
-print "Loading"
-time.sleep(1)
-clear()
-print "Loading."
-time.sleep(1)
-clear()
-print "Loading.."
-time.sleep(1)
-clear()
-print "Loading..."
-time.sleep(1)
-clear()
-print "Enter 1 to load."
-print "Enter 2 for a New Game."
-choice_active = "active"
-while (choice_active == "active"):
-    choice = raw_input("... ")
-    if choice == '1':
-        load()
-    elif choice == '2':
-        new_game()
-
 def play_loop():
     clear()
     fetch_status()
@@ -272,12 +275,24 @@ def play_loop():
         actionChoice()
 
 def game_story():
-    play_loop()
-    event1()
-    play_loop()
-    event2()
-    play_loop()
-    event3()
+    global load
+    global event
+    if load == '1':
+    	if event == '1':
+    		play_loop()
+    		event2()
+    		load = 0
+    	elif event == '2':
+    		play_loop()
+    		event3()
+    		load = 0
+    else:
+	play_loop()
+    	event1()
+    	play_loop()
+    	event2()
+    	play_loop()
+    	event3()
 
 def new_game():
     init()
@@ -301,6 +316,8 @@ def new_game():
     game_story()
 
 def event1():
+     global event
+     event = 1
      clear()
      print "The wind has picked up, the cabin is really not liking it."
      print ""
@@ -341,15 +358,12 @@ def event1():
      print ""
      print ""
      print raw_input("Press enter to continue.")
-     clear()
-     fetch_status()
-     loop = random.randint(0,20)
-     while loop > 1:
-         loop = loop - 1
-         actionChoice()
+     play_loop()
      event2()
 
 def event2():
+     global event
+     event = 2
      clear()
      print "The stranger by the fire is waking up..."
      print ""
@@ -381,15 +395,13 @@ def event2():
      print ""
      print ""
      print raw_input("Press enter to continue.")
-     clear()
-     loop = random.randint(0,50)
-     while loop > 1:
-         loop = loop - 1
-         actionChoice()
-     clear()
+     play_loop()
      event3()
 
 def event3():
+    clear()
+    global event
+    event = 3
     print "After all that, Amanda and I?"
     print ""
     print "We're friends."
@@ -400,9 +412,4 @@ def event3():
     stranger = stranger - 1
     global friend
     friend = friend + 1
-    clear()
-    loop = random.randint(0,100)
-    while loop > 1:
-        loop = loop - 1
-        actionChoice()
-    clear()
+    play_loop()
