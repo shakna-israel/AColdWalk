@@ -2,6 +2,7 @@
 import os
 import time
 import random
+import sys
 
 global var_warmth
 global var_wood
@@ -37,6 +38,7 @@ def init():
 
 def fetch_status():
     checkValues()
+    print "Your name is: " + username
     print "Body Warmth: " + str(var_warmth) + "%"
     print "Wood Stockpile: " + str(var_wood) + "%"
     print "Health: " + str(var_health) + "%"
@@ -45,7 +47,24 @@ def fetch_status():
     print ""
     print ""
 
+def reset_values():
+    global var_warmth
+    global var_wood
+    global var_health
+    global var_food
+    global var_anxiety
+    global stranger
+    global friend
+    friend = int(friend)
+    stranger = int(stranger)
+    var_anxiety = int(var_anxiety)
+    var_food = int(var_food)
+    var_health = int(var_health)
+    var_wood = int(var_wood)
+    var_warmth = int(var_warmth)
+
 def checkValues():
+    reset_values()
     global var_wood
     if var_wood >= 100:
         var_wood = 100
@@ -231,6 +250,7 @@ def actionChoice():
         print "Enter A to group by the fire."
         print "Enter B to gather wood together."
     print "Enter S to save."
+    print "Enter Q to quit. (Does not save)"
     choice_active = 1
     while (choice_active == 1):
         choice = raw_input("... ")
@@ -252,6 +272,10 @@ def actionChoice():
         elif choice == 's':
             save_game()
             print "Saved"
+        elif choice == 'Q':
+            sys.exit("Quit without error.")
+        elif choice == 'q':
+            sys.exit("Quit without error.")
     print raw_input("Press enter to continue.")
     clear()
 
@@ -439,7 +463,7 @@ clear()
 print "Loading..."
 time.sleep(1)
 clear()
-print "Enter 1 to load."
+print "Enter 1 to Load Game."
 print "Enter 2 for a New Game."
 choice_active = "active"
 while (choice_active == "active"):
