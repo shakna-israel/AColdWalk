@@ -12,37 +12,6 @@ global username
 global stranger
 global friend
 
-# Global function for game intro
-clear()
-print "A Cold Walk"
-time.sleep(1)
-print ""
-print ""
-print "jm | Design"
-time.sleep(1)
-clear()
-print "Loading"
-time.sleep(1)
-clear()
-print "Loading."
-time.sleep(1)
-clear()
-print "Loading.."
-time.sleep(1)
-clear()
-print "Loading..."
-time.sleep(1)
-clear()
-print "Enter 1 to load."
-print "Enter 2 for a New Game."
-choice_active = "active"
-while (choice_active == "active"):
-    choice = raw_input("... ")
-    if choice == '1':
-        load()
-    elif choice == '2':
-        new_game()
-
 def clear():
     os.system(['clear','cls'][os.name == 'nt'])
 
@@ -413,3 +382,34 @@ def event3():
     global friend
     friend = friend + 1
     play_loop()
+
+# Global function for game intro
+clear()
+print "A Cold Walk"
+time.sleep(1)
+print ""
+print ""
+print "jm | Design"
+time.sleep(1)
+clear()
+print "Loading"
+time.sleep(1)
+clear()
+print "Loading."
+time.sleep(1)
+clear()
+print "Loading.."
+time.sleep(1)
+clear()
+print "Loading..."
+time.sleep(1)
+clear()
+print "Enter 1 to load."
+print "Enter 2 for a New Game."
+choice_active = "active"
+while (choice_active == "active"):
+    choice = raw_input("... ")
+    if choice == '1':
+        load()
+    elif choice == '2':
+        new_game()
