@@ -54,3 +54,5 @@ docs/_build/
 target/
 
 # Don't add save files
+save.var
+*.save
