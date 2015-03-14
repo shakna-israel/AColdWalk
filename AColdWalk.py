@@ -198,6 +198,7 @@ def load():
             line = event
         i = i + 1
     file.close()
+    game_story()
 
 def actionChoice():
     checkValues()
