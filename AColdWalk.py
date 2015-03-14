@@ -158,6 +158,14 @@ def load():
     global username
     global stranger
     global friend
+    var_warmth = 0
+    var_wood = 0
+    var_health = 0
+    var_food = 0
+    var_anxiety = 0
+    username = 0
+    stranger = 0
+    friend = 0
     file = open("save.var", "r")
     i = 0
     for line in file.read().split('\n'):
