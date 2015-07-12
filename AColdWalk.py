@@ -23,16 +23,19 @@ def game_choices(player_values,player_name):
     if str(choice).strip() == '1':
         player_values = actions.gather_wood(player_values)
         pass
-    if str(choice).strip() == '2':
+    elif str(choice).strip() == '2':
         player_values = actions.stoke_fire(player_values)
         pass
-    if str(choice).strip() == '3':
+    elif str(choice).strip() == '3':
         player_values = actions.gather_food(player_values)
         pass
-    if str(choice).strip() == '4':
+    elif str(choice).strip() == '4':
         player_values = actions.eat_food(player_values)
         pass
-    if str(choice).strip() == '5':
+    elif str(choice).strip() == '5':
+        player_values = actions.do_nothing(player_values)
+        pass
+    else:
         player_values = actions.do_nothing(player_values)
         pass
     player_values = confirm_values(player_values)

@@ -26,7 +26,7 @@ def load_file():
             except ValueError:
                 returnValue = confirm_values({})
             return returnValue
-    except FileNotFoundError:
+    except (OSError, IOError) as e:
         returnValue = confirm_values({})
         return returnValue
 
