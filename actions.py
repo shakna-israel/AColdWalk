@@ -54,12 +54,12 @@ def gather_wood(player_values):
             warmth = int(warmth) - random.randint(1,10)
             hunger = int(hunger) - random.randint(1,10)
             anxiety = int(anxiety) - random.randint(1,10)
-            wood = int(wood) + random.randint(1,10)
+            wood = (int(wood) + random.randint(1,10)) * int(anxiety)
         if int(friends) > 1:
             warmth = int(warmth) - random.randint(1,10)
             hunger = int(hunger) - random.randint(1,10)
             anxiety = int(anxiety) - random.randint(1,10)
-            wood = int(wood) + (random.randint(1,10) * int(friends))
+            wood = (int(wood) + (random.randint(1,10) * int(friends))) * int(anxiety)
     return {'warmth':warmth, 'hunger':hunger,'health':health,'anxiety':anxiety,'friends':friends,'status':status,'wood':wood, 'player':name}
 
 def gather_food(player_values):
@@ -81,12 +81,12 @@ def gather_food(player_values):
             warmth = int(warmth) - random.randint(1,10)
             hunger = int(hunger) - random.randint(1,10)
             anxiety = int(anxiety) - random.randint(1,10)
-            food = int(food) + random.randint(1,10)
+            food = (int(food) + random.randint(1,10)) * int(anxiety)
         if int(friends) > 1:
             warmth = int(warmth) - random.randint(1,10)
             hunger = int(hunger) - random.randint(1,10)
             anxiety = int(anxiety) - random.randint(1,10)
-            food = int(food) + (random.randint(1,10) * int(friends))
+            food = (int(food) + (random.randint(1,10) * int(friends))) * int(anxiety)
     return {'warmth':warmth, 'hunger':hunger,'health':health,'anxiety':anxiety,'friends':friends,'status':status,'wood':wood, 'food':food,'player':name}
 
 def eat_food(player_values):
@@ -109,11 +109,13 @@ def eat_food(player_values):
             hunger = int(hunger) + random.randint(1,10)
             anxiety = int(anxiety) - random.randint(1,10)
             food = int(food) - random.randint(1,10)
+            health = int(health) + random.randint(1,10)
         if int(friends) > 1:
             warmth = int(warmth) - random.randint(1,10)
             hunger = int(hunger) + (random.randint(1,10) * int(friends))
             anxiety = int(anxiety) - random.randint(1,10)
             food = int(food) - (random.randint(1,10) * int(friends))
+            health = int(health) + (random.randint(1,10) * int(friends))
     return {'warmth':warmth, 'hunger':hunger,'health':health,'anxiety':anxiety,'friends':friends,'status':status,'wood':wood, 'food':food,'player':name}
 
 def do_nothing(player_values):
@@ -127,12 +129,14 @@ def do_nothing(player_values):
     name = player_values['player']
     if int(friends) < 1:
         status = "Doing nothing alone..."
-        warmth = int(warmth) + random.randint(1,10)
+        warmth = (int(warmth) + random.randint(1,10)) * int(wood)
         hunger = int(hunger) - random.randint(1,10)
-        anxiety = int(anxiety) - random.randint(1,10)
+        anxiety = int(anxiety) + random.randint(1,10)
+        wood = int(wood) - random.randint(1,10)
     if int(friends) > 1:
         status = "Doing nothing alone..."
-        warmth = int(warmth) + (random.randint(1,10) * int(friends))
+        warmth = (int(warmth) + (random.randint(1,10) * int(friends))) * int(wood)
         hunger = int(hunger) - (random.randint(1,10) * int(friends))
-        anxiety = int(anxiety) - (random.randint(1,10) * int(friends))
+        anxiety = int(anxiety) + (random.randint(1,10) * int(friends))
+        wood = int(wood) - random.randint(1,10)
     return {'warmth':warmth, 'hunger':hunger,'health':health,'anxiety':anxiety,'friends':friends,'status':status,'wood':wood, 'food':food,'player':name}
