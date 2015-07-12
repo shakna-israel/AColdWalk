@@ -11,7 +11,7 @@ def game_init():
     save_file(save_data)
     return save_data
 
-def game_choices(player_values,player_name):
+def game_choices(player_values):
     utilities.screen_clear()
     pretty_values(player_values)
     choice_string = ("---\n1. Gather Wood\n"
@@ -42,7 +42,7 @@ def game_choices(player_values,player_name):
     player_values = value_relationships(player_values)
     player_values = confirm_values(player_values)
     save_file(player_values)
-    game_choices(player_values,player_name)
+    game_choices(player_values)
 
 if __name__ == "__main__":
     utilities.screen_clear()
@@ -52,6 +52,15 @@ if __name__ == "__main__":
     print("(c) James Milne 2015")
     input("Press Enter To Continue ")
     utilities.screen_clear()
-    player_name = input("What is your name? ")
-    utilities.screen_clear()
-    game_choices(player_values,player_name)
+    # Set the player name if it doesn't already exist:
+    player_name = player_values['player']
+    if player_name == "NotSet":
+        player_name = input("What is your name? ")
+        player_values['player'] = str(player_name)
+        player_name = player_values['player']
+        player_values = confirm_values(player_values)
+        player_values = value_relationships(player_values)
+        player_values = confirm_values(player_values)
+        save_file(player_values)
+
+    game_choices(player_values)

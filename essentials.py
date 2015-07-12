@@ -113,7 +113,13 @@ def confirm_values(dictIn):
         status = str(dictIn['status'])
     except KeyError:
         status = "Doing Nothing"
-    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food}
+    # Value to give player a name
+    try:
+        dictIn['player']
+        player_name = str(dictIn['player'])
+    except KeyError:
+        player_name = "NotSet"
+    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food, 'player': player_name}
 
 def value_relationships(dictIn):
     health = int(dictIn['health'])
@@ -124,6 +130,7 @@ def value_relationships(dictIn):
     wood = int(dictIn['wood'])
     food = int(dictIn['food'])
     status = dictIn['status']
+    name = dictIn['player']
 
     if health < 1:
         status = "The doctor found me at death's door..."
@@ -147,7 +154,7 @@ def value_relationships(dictIn):
         status = "Sssscared... Sooo sssscared..."
         health = health - random.randint(1,10)
         anxiety = 10
-    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status}
+    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status,'player':name}
 
 def pretty_values(dictIn):
     print("Health: " + str(dictIn['health']) + "%")
