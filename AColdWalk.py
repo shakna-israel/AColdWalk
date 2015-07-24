@@ -6,7 +6,6 @@ import atexit
 import random
 
 def game_init():
-    utilities.fetch_input_method()
     file_structure()
     save_data = load_file()
     save_data = confirm_values(save_data)
@@ -17,7 +16,7 @@ def game_choices(player_values):
     utilities.screen_clear()
     if story.check_event(player_values) == 'none':
         if random.randint(1,5) == int('5'):
-            story.event_one()
+            story.event_one(player_values)
             player_values['event'] = 'one'
     pretty_values(player_values)
     choice_string = ("---\n1. Gather Wood\n"
@@ -51,6 +50,13 @@ def game_choices(player_values):
     game_choices(player_values)
 
 if __name__ == "__main__":
+
+    """A hack-y mess to allow input() on Python 2.x and Python 3.x"""
+    try:
+        input = raw_input
+    except NameError:
+        pass
+
     utilities.screen_clear()
     atexit.register(utilities.exit_handler)
     player_values = game_init()
