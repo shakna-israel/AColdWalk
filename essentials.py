@@ -119,7 +119,13 @@ def confirm_values(dictIn):
         player_name = str(dictIn['player'])
     except KeyError:
         player_name = "NotSet"
-    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food, 'player': player_name}
+    # Value to allow linear story progression
+    try:
+        dictIn['event']
+        event = str(dictIn['event'])
+    except KeyError:
+        event = "none"
+    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food, 'player': player_name, 'event': event}
 
 def value_relationships(dictIn):
     health = int(dictIn['health'])
@@ -131,6 +137,7 @@ def value_relationships(dictIn):
     food = int(dictIn['food'])
     status = dictIn['status']
     name = dictIn['player']
+    event = dictIn['event']
 
     if health < 1:
         status = "The doctor found me at death's door..."
@@ -154,7 +161,7 @@ def value_relationships(dictIn):
         status = "Sssscared... Sooo sssscared..."
         health = health - random.randint(1,10)
         anxiety = 10
-    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status,'player':name}
+    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status,'player':name,'event':event}
 
 def pretty_values(dictIn):
     print("Health: " + str(dictIn['health']) + "%")

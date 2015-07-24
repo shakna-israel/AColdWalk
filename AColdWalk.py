@@ -1,7 +1,9 @@
 import utilities
 from essentials import file_structure, save_file, load_file, confirm_values, pretty_values, value_relationships
 import actions
+import story
 import atexit
+import random
 
 def game_init():
     utilities.fetch_input_method()
@@ -13,6 +15,10 @@ def game_init():
 
 def game_choices(player_values):
     utilities.screen_clear()
+    if story.check_event(player_values) == 'none':
+        if random.randint(1,5) == int('5'):
+            story.event_one()
+            player_values['event'] = 'one'
     pretty_values(player_values)
     choice_string = ("---\n1. Gather Wood\n"
              "2. Stoke the Fire\n"

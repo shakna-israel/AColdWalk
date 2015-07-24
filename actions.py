@@ -140,3 +140,6 @@ def do_nothing(player_values):
         anxiety = int(anxiety) + (random.randint(1,10) * int(friends))
         wood = int(wood) - random.randint(1,10)
     return {'warmth':warmth, 'hunger':hunger,'health':health,'anxiety':anxiety,'friends':friends,'status':status,'wood':wood, 'food':food,'player':name}
+
+if __name__ == '__main__':
+    print("This is the game actions library, designed for use with AColdWalk, licensed under the MIT License, (c) James Milne 2015")
