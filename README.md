@@ -9,6 +9,8 @@
 * Automatic Saving
     * Your every action will be immediately remembered.
     * *A Cold Walk* saves to ```~/.AColdWalk/save```, which is a JSON file. If you want to cheat, that's the place, but it probably won't help you much.
+* Unlimited Play
+    * Your resources are limited, but the environment's are not.
 * 100% compatible savefiles.
     * If you update your version of *A Cold Walk*, your save will continue to work.
     * A newer savefile *should* work fine in an old version of *A Cold Walk*, however you will probably lose any record of new features immediately.
