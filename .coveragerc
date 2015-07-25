@@ -1,0 +1,3 @@
+[report]
+omit = *tests*, *env*
+fail_under = 80
