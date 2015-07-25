@@ -6,6 +6,7 @@ python:
  - "3.3"
  - "3.2"
  - "3.4"
+ - "3.5-dev"
  - "pypy"
  - "pypy3"
  - "nightly" # Cython
@@ -15,3 +16,4 @@ script: "nosetests && coverage report --fail-under=80"
 matrix:
   allow_failures:
     - python: "nightly"
+    - python: "3.5-dev"
