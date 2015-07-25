@@ -2,6 +2,8 @@
 
 ## An Infinite Console-based Game
 
+[![Build Status](https://travis-ci.org/shakna-israel/AColdWalk.svg)](https://travis-ci.org/shakna-israel/AColdWalk)
+
 *The winter is cold, you're all alone in your shack, and you must survive.*
 
 ## Features:
