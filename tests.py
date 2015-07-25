@@ -112,3 +112,63 @@ class ActionsTestSuite(unittest.TestCase):
             print("Expected: 91 to 150")
             print("Got: " + str(results['warmth']))
             assert False, "Warmth value was not as expected."
+
+    def test_stokeFire_valuesWarmthSixFriends(self,dictIn=dictIn):
+        """Test what happens to the warmth value when a player stokes the fire, and there is wood, and six friends."""
+        dictIn['friends'] = 6
+        dictIn['wood'] = 100
+        dictIn['warmth'] = 90
+        results = actions.stoke_fire(dictIn)
+        if dictIn == results:
+            assert False, "Function didn't modify any values."
+        if int(results['warmth']) in range (90,131):
+            assert True
+        else:
+            print("Expected: 91 to 130")
+            print("Got: " + str(results['warmth']))
+            assert False, "Warmth value was not as expected."
+
+    def test_stokeFire_valuesWarmthSevenFriends(self,dictIn=dictIn):
+        """Test what happens to the warmth value when a player stokes the fire, and there is wood, and seven friends."""
+        dictIn['friends'] = 7
+        dictIn['wood'] = 100
+        dictIn['warmth'] = 90
+        results = actions.stoke_fire(dictIn)
+        if dictIn == results:
+            assert False, "Function didn't modify any values."
+        if int(results['warmth']) in range (90,146):
+            assert True
+        else:
+            print("Expected: 91 to 145")
+            print("Got: " + str(results['warmth']))
+            assert False, "Warmth value was not as expected."
+
+    def test_stokeFire_valuesWarmthEightFriends(self,dictIn=dictIn):
+        """Test what happens to the warmth value when a player stokes the fire, and there is wood, and eight friends."""
+        dictIn['friends'] = 8
+        dictIn['wood'] = 100
+        dictIn['warmth'] = 90
+        results = actions.stoke_fire(dictIn)
+        if dictIn == results:
+            assert False, "Function didn't modify any values."
+        if int(results['warmth']) in range (90,141):
+            assert True
+        else:
+            print("Expected: 91 to 140")
+            print("Got: " + str(results['warmth']))
+            assert False, "Warmth value was not as expected."
+
+    def test_stokeFire_valuesWarmthNineFriends(self,dictIn=dictIn):
+        """Test what happens to the warmth value when a player stokes the fire, and there is wood, and nine friends."""
+        dictIn['friends'] = 9
+        dictIn['wood'] = 100
+        dictIn['warmth'] = 90
+        results = actions.stoke_fire(dictIn)
+        if dictIn == results:
+            assert False, "Function didn't modify any values."
+        if int(results['warmth']) in range (90,141):
+            assert True
+        else:
+            print("Expected: 91 to 140")
+            print("Got: " + str(results['warmth']))
+            assert False, "Warmth value was not as expected."

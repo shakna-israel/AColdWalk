@@ -3,3 +3,4 @@
 2015-07-25 (Utilities|Main) Multiple Save Files
 2015-07-25 (Tests) Need UnitTesting
 2015-07-25 (Tests) Need automated Python Version Compatibility Testing
+2015-07-25 (Actions|Story|Main) Add Nameable Pets, who could make it easier to heat, cook, hunt, etc. They should also have their own needs, probably only Warmth and Anxiety
