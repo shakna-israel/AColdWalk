@@ -12,10 +12,11 @@ That'll just help establish what version of *Python* you have, what version of *
 
 ## Bug-Fixes
 
-If you have a proposed fix for a bug that *has an open issue on GitHub*, then open a *pull request on GitHub*.
+If you have a proposed fix for a bug that *has an open issue on GitHub*, then open a [pull request on GitHub](https://github.com/shakna-israel/AColdWalk/compare).
 
 Be sure to:
 
+* Use a branch other than *master* in your repository.
 * Include a docstring on any new functions.
 * Include a unittest for your new function.
 * Don't use classes. For something of this complexity, its not necessary, and would probably make the program slower.
