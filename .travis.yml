@@ -10,4 +10,4 @@ python:
  - "pypy3"
  - "nightly" # Cython
 install: "pip install nose && pip install coverage"
-script: "nosetests && coverage --fail-under=80"
+script: "nosetests && coverage report --fail-under=80"
