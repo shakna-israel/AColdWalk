@@ -24,3 +24,5 @@
     * Not-Yet-Implemented
 * Compatible with both Python 2.6+ and Python 3.2+
     * Not yet unittested, but should be accurate.
+
+A more up-to-date list of incoming features may be found at [todo.txt](todo.txt)
