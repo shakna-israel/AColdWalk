@@ -31,6 +31,11 @@ def stoke_fire(player_values):
                 hunger = int(hunger) - random.randint(1,10)
                 anxiety = int(anxiety) - (random.randint(1,10)/0.5)
                 wood = int(wood) - (random.randint(1,10)/int(friends))
+            elif int(friends) == 10:
+                warmth = int(warmth) + (random.randint(1,10) * (int(friends)/2))
+                hunger = int(hunger) - random.randint(1,10)
+                anxiety = int(anxiety) - (random.randint(1,10)/0.5)
+                wood = int(wood) - (random.randint(1,10)/int(friends))
             elif int(friends) > 10:
                 warmth = int(warmth) + (random.randint(1,10) * (int(friends)/4))
                 hunger = int(hunger) - random.randint(1,10)
