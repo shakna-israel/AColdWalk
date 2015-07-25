@@ -5,6 +5,8 @@ import story
 import atexit
 import random
 
+__ver__ = '0.01'
+
 def game_init():
     file_structure()
     save_data = load_file()
