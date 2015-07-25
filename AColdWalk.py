@@ -17,7 +17,7 @@ def game_choices(player_values):
     if story.check_event(player_values) == 'none':
         if random.randint(1,5) == int('5'):
             story.event_one(player_values)
-            player_values['event'] = 'one'
+            player_values = load_file()
     pretty_values(player_values)
     choice_string = ("---\n1. Gather Wood\n"
              "2. Stoke the Fire\n"

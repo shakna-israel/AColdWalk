@@ -101,7 +101,7 @@ def confirm_values(dictIn):
         dictIn['food']
         if int(dictIn['food']) >99:
             food = 100
-        if int(dictIn['food']) < 0:
+        elif int(dictIn['food']) < 0:
             food = 0
         else:
             food = int(dictIn['food'])
@@ -125,7 +125,13 @@ def confirm_values(dictIn):
         event = str(dictIn['event'])
     except KeyError:
         event = "none"
-    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food, 'player': player_name, 'event': event}
+    # Value to allow for strangers in the house
+    try:
+        dictIn['stranger']
+        stranger = str(dictIn['stranger'])
+    except KeyError:
+        stranger = str(0)
+    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food, 'player': player_name, 'event': event, 'stranger': stranger}
 
 def value_relationships(dictIn):
     health = int(dictIn['health'])
@@ -138,6 +144,7 @@ def value_relationships(dictIn):
     status = dictIn['status']
     name = dictIn['player']
     event = dictIn['event']
+    stranger = int(dictIn['stranger'])
 
     if health < 1:
         status = "The doctor found me at death's door..."
@@ -161,7 +168,14 @@ def value_relationships(dictIn):
         status = "Sssscared... Sooo sssscared..."
         health = health - random.randint(1,10)
         anxiety = 10
-    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status,'player':name,'event':event}
+
+    if stranger > 1:
+        status = "I'm not freaking out... I'm not freaking out..."
+        anxiety = anxiety * 0.5
+        if anxiety < 10:
+            anxiety = 10
+
+    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status,'player':name,'event':event,'stranger':stranger}
 
 def pretty_values(dictIn):
     print("Health: " + str(dictIn['health']) + "%")
@@ -171,7 +185,10 @@ def pretty_values(dictIn):
     print("---")
     print("Wood: " + str(dictIn['wood']) + '%')
     print("Food: " + str(dictIn['food']) + '%')
-    print("Friends: " + str(dictIn['friends']))
+    if int(dictIn['friends']) > 0:
+        print("Friends: " + str(dictIn['friends']))
+    if int(dictIn['stranger']) > 0:
+        print("Strangers: " + str(dictIn['stranger']))
     print("---")
     print("Status: " + str(dictIn['status']))
 
