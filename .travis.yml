@@ -11,3 +11,7 @@ python:
  - "nightly" # Cython
 install: "pip install nose && pip install coverage"
 script: "nosetests && coverage report --fail-under=80"
+
+matrix:
+  allow_failures:
+    - python: "nightly"
