@@ -137,14 +137,15 @@ def do_nothing(player_values):
     name = player_values['player']
     event = player_values['event']
     stranger = player_values['stranger']
+    status = player_values['status']
     if int(friends) < 1:
         status = "Doing nothing..."
         warmth = (int(warmth) + random.randint(1,4)) * int(wood)
         hunger = int(hunger) - random.randint(1,4)
         anxiety = int(anxiety) + random.randint(4,8)
         wood = int(wood) - random.randint(1,4)
-    elif int(friends) > 1:
-        status = "Doing nothing..."
+    elif int(friends) > 0:
+        status = "Doing nothing with friends..."
         warmth = (int(warmth) + (random.randint(1,4) * int(friends))) * int(wood)
         hunger = int(hunger) - (random.randint(1,4) * int(friends))
         anxiety = int(anxiety) + (random.randint(4,8) * int(friends))
