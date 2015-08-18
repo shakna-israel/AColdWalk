@@ -19,7 +19,7 @@ def stoke_fire(player_values):
             hunger = int(hunger) - random.randint(1,4)
             anxiety = int(anxiety) - random.randint(1,2)
             wood = int(wood) - random.randint(1,4)
-        elif int(friends) > 1:
+        elif int(friends) > 0:
             if int(friends) < 5:
                 warmth = int(warmth) + (random.randint(1,4) * int(friends))
                 hunger = int(hunger) - random.randint(1,4)
@@ -59,7 +59,7 @@ def gather_wood(player_values):
             hunger = int(hunger) - random.randint(1,4)
             anxiety = int(anxiety) - random.randint(1,2)
             wood = (int(wood) + random.randint(1,4)) * int(anxiety)
-        if int(friends) > 1:
+        if int(friends) > 0:
             warmth = int(warmth) - random.randint(1,4)
             hunger = int(hunger) - random.randint(1,4)
             anxiety = int(anxiety) - random.randint(1,2)
@@ -88,7 +88,7 @@ def gather_food(player_values):
             hunger = int(hunger) - random.randint(1,4)
             anxiety = int(anxiety) - random.randint(1,2)
             food = (int(food) + random.randint(1,4)) * int(anxiety)
-        if int(friends) > 1:
+        if int(friends) > 0:
             warmth = int(warmth) - random.randint(1,4)
             hunger = int(hunger) - random.randint(1,4)
             anxiety = int(anxiety) - random.randint(1,2)
@@ -118,7 +118,7 @@ def eat_food(player_values):
             anxiety = int(anxiety) - random.randint(1,2)
             food = int(food) - random.randint(1,4)
             health = int(health) + random.randint(1,4)
-        if int(friends) > 1:
+        if int(friends) > 0:
             warmth = int(warmth) - random.randint(1,4)
             hunger = int(hunger) + (random.randint(1,4) * int(friends))
             anxiety = int(anxiety) - random.randint(1,2)
