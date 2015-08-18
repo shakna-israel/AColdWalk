@@ -48,15 +48,16 @@ def event_one(dictIn):
     if str(choice).strip() == '1':
         dictIn['anxiety'] = 0
         dictIn['stranger'] = 1
+        dictIn['event'] = 'one'
         pass
     elif str(choice).strip() == '2':
         dictIn['anxiety'] = 0
+        dictIn['event'] = 'none'
         pass
     else:
         dictIn['anxiety'] = 0
+        dictIn['event'] = 'none'
         pass
-    dictIn['event'] = 'one'
-    print(dictIn['event'])
     dictIn = essentials.confirm_values(dictIn)
     dictIn = essentials.value_relationships(dictIn)
     dictIn = essentials.confirm_values(dictIn)

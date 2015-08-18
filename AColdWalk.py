@@ -17,7 +17,7 @@ def game_init():
 def game_choices(player_values):
     utilities.screen_clear()
     if story.check_event(player_values) == 'none':
-        if random.randint(1,5) == int('5'):
+        if random.randint(1,10) == int('10'):
             story.event_one(player_values)
             player_values = load_file()
     pretty_values(player_values)
