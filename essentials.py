@@ -42,7 +42,7 @@ def confirm_values(dictIn):
         else:
             health = int(dictIn['health'])
     except KeyError:
-        health = 10
+        health = 100
     # For the hunger value
     try:
         dictIn['hunger']
@@ -53,7 +53,7 @@ def confirm_values(dictIn):
         else:
             hunger = int(dictIn['hunger'])
     except KeyError:
-        hunger = 10
+        hunger = 100
     # For the warmth value
     try:
         dictIn['warmth']
@@ -64,7 +64,7 @@ def confirm_values(dictIn):
         else:
             warmth = int(dictIn['warmth'])
     except KeyError:
-        warmth = 10
+        warmth = 100
     # For the anxiety value
     try:
         dictIn['anxiety']
@@ -75,7 +75,7 @@ def confirm_values(dictIn):
         else:
             anxiety = int(dictIn['anxiety'])
     except KeyError:
-        anxiety = 10
+        anxiety = 100
     # For the number of friends
     try:
         dictIn['friends']
@@ -95,7 +95,7 @@ def confirm_values(dictIn):
         else:
             wood = int(dictIn['wood'])
     except KeyError:
-        wood = 10
+        wood = 100
     # Value to make the food essential
     try:
         dictIn['food']
@@ -106,7 +106,7 @@ def confirm_values(dictIn):
         else:
             food = int(dictIn['food'])
     except KeyError:
-        food = 10
+        food = 100
     # Value to make returning random statements easier
     try:
         dictIn['status']
@@ -175,7 +175,7 @@ def value_relationships(dictIn):
         if anxiety < 10:
             anxiety = 10
 
-    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friend':friends,'wood':wood,'food':food,'status':status,'player':name,'event':event,'stranger':stranger}
+    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friends':friends,'wood':wood,'food':food,'status':status,'player':name,'event':event,'stranger':stranger}
 
 def pretty_values(dictIn):
     print("Health: " + str(dictIn['health']) + "%")

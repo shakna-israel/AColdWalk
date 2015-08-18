@@ -65,5 +65,28 @@ def event_one(dictIn):
     utilities.screen_clear()
     return True
 
+def event_two(dictIn):
+    dictIn = event_printing(dictIn)
+    print(dictIn['player'] + " was staring at the stranger shivering in the corner...")
+    input("Press Enter To Continue ")
+    dictIn = event_printing(dictIn)
+    print("The stranger stood up slowly...")
+    dictIn['anxiety'] = int(dictIn['anxiety']) - 10
+    input("Press Enter To Continue ")
+    dictIn = event_printing(dictIn)
+    print("They smile slowly, and say... Thankyou.")
+    dictIn['anxiety'] = int(dictIn['anxiety']) + 20
+    input("Press Enter To Continue ")
+    dictIn = event_printing(dictIn)
+    dictIn['stranger'] = int(dictIn['stranger']) - 1
+    dictIn['friends'] = int(dictIn['friends']) + 1
+    dictIn['event'] = 'two'
+    dictIn = essentials.confirm_values(dictIn)
+    dictIn = essentials.value_relationships(dictIn)
+    dictIn = essentials.confirm_values(dictIn)
+    essentials.save_file(dictIn)
+    utilities.screen_clear()
+
+
 if __name__ == '__main__':
     print("This is the game story library, designed for use with AColdWalk, licensed under the MIT License, (c) James Milne 2015")

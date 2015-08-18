@@ -20,6 +20,10 @@ def game_choices(player_values):
         if random.randint(1,10) == int('10'):
             story.event_one(player_values)
             player_values = load_file()
+    elif story.check_event(player_values) == 'one':
+        if random.randint(1,10) == int('10'):
+            story.event_two(player_values)
+            player_values = load_file()
     pretty_values(player_values)
     choice_string = ("---\n1. Gather Wood\n"
              "2. Stoke the Fire\n"
