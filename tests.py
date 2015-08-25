@@ -4,7 +4,7 @@ import actions
 
 class ActionsTestSuite(unittest.TestCase):
     """Test the Actions Library"""
-    dictIn = {'warmth':100, 'hunger':100,'health':100,'anxiety':100,'friends':0,'status':"TestingStatus",'wood':100,'player':"TestUser", 'event':"none",'stranger':0}
+    dictIn = {'warmth':100, 'hunger':100,'health':100,'anxiety':100,'friends':0,'status':"TestingStatus",'wood':100,'player':"TestUser", 'event':"none",'stranger':0, 'pet':0, 'petname':[] }
 
     def test_stokeFire_noWood(self,dictIn=dictIn):
         """Test what happens when a player stokes the fire, and there is no wood"""

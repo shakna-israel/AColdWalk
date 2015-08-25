@@ -152,7 +152,7 @@ def confirm_values(dictIn):
     # Value to allow for pet names
     try:
         dictIn['petname']
-        petname = list(petname)
+        petname = list(dictIn['petname'])
     except KeyError:
         petname = []
     dictIn['petname'] = petname
@@ -206,18 +206,18 @@ def value_relationships(dictIn):
         if anxiety < 10:
             anxiety = 10
 
-    int(dictIn['health']) = health
-    int(dictIn['hunger']) = hunger
-    int(dictIn['warmth']) = warmth
-    int(dictIn['anxiety']) = anxiety
-    int(dictIn['friends']) = friends
-    int(dictIn['wood']) = wood
-    int(dictIn['food']) = food
+    dictIn['health'] = int(health)
+    dictIn['hunger'] = int(hunger)
+    dictIn['warmth'] = int(warmth)
+    dictIn['anxiety'] = int(anxiety)
+    dictIn['friends'] = int(friends)
+    dictIn['wood'] = int(wood)
+    dictIn['food'] = int(food)
     dictIn['status'] = status
     dictIn['player'] = name
     dictIn['event'] = event
-    int(dictIn['stranger']) = stranger
-    int(dictIn['pet']) = pet
+    dictIn['stranger'] = int(stranger)
+    dictIn['pet'] = int(pet)
     return dictIn
 
 def pretty_values(dictIn):

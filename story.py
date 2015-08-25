@@ -89,7 +89,17 @@ def event_two(dictIn):
 
 def event_three(dictIn):
     dictIn = event_printing(dictIn)
-    
+    print(dictIn['player'] + " was sitting in the cold, and the quiet.")
+    input("Press Enter To Continue ")
+    dictIn['anxiety'] = int(dictIn['anxiety']) - 10
+    dictIn = event_printing(dictIn)
+    print("There was a small distant snuffling sound.")
+    input("Press Enter To Continue ")
+    dictIn['anxiety'] = int(dictIn['anxiety']) - 10
+    dictIn = event_printing(dictIn)
+    print("It came closer and closer...")
+    input("Press Enter To Continue ")
+    dictIn = event_printing(dictIn)
 
 if __name__ == '__main__':
     print("This is the game story library, designed for use with AColdWalk, licensed under the MIT License, (c) James Milne 2015")
