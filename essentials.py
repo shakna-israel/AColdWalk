@@ -43,6 +43,7 @@ def confirm_values(dictIn):
             health = int(dictIn['health'])
     except KeyError:
         health = 100
+    dictIn['health'] = health
     # For the hunger value
     try:
         dictIn['hunger']
@@ -54,6 +55,7 @@ def confirm_values(dictIn):
             hunger = int(dictIn['hunger'])
     except KeyError:
         hunger = 100
+    dictIn['hunger'] = hunger
     # For the warmth value
     try:
         dictIn['warmth']
@@ -65,6 +67,7 @@ def confirm_values(dictIn):
             warmth = int(dictIn['warmth'])
     except KeyError:
         warmth = 100
+    dictIn['warmth'] = warmth
     # For the anxiety value
     try:
         dictIn['anxiety']
@@ -76,6 +79,7 @@ def confirm_values(dictIn):
             anxiety = int(dictIn['anxiety'])
     except KeyError:
         anxiety = 100
+    dictIn['anxiety'] = anxiety
     # For the number of friends
     try:
         dictIn['friends']
@@ -85,6 +89,7 @@ def confirm_values(dictIn):
             friends = int(dictIn['friends'])
     except KeyError:
         friends = 0
+    dictIn['friends'] = friends
     # Value to make the fire essential
     try:
         dictIn['wood']
@@ -96,6 +101,7 @@ def confirm_values(dictIn):
             wood = int(dictIn['wood'])
     except KeyError:
         wood = 100
+    dictIn['wood'] = wood
     # Value to make the food essential
     try:
         dictIn['food']
@@ -107,37 +113,50 @@ def confirm_values(dictIn):
             food = int(dictIn['food'])
     except KeyError:
         food = 100
+    dictIn['food'] = food
     # Value to make returning random statements easier
     try:
         dictIn['status']
         status = str(dictIn['status'])
     except KeyError:
         status = "Doing Nothing"
+    dictIn['status'] = status
     # Value to give player a name
     try:
         dictIn['player']
         player_name = str(dictIn['player'])
     except KeyError:
         player_name = "NotSet"
+    dictIn['player'] = player_name
     # Value to allow linear story progression
     try:
         dictIn['event']
         event = str(dictIn['event'])
     except KeyError:
         event = "none"
+    dictIn['event'] = event
     # Value to allow for strangers in the house
     try:
         dictIn['stranger']
         stranger = str(dictIn['stranger'])
     except KeyError:
         stranger = str(0)
+    dictIn['stranger'] = stranger
     # Value to allow for pets in the house
     try:
         dictIn['pet']
         pet = str(dictIn['pet'])
     except KeyError:
         pet = str(0)
-    return {'health': health, 'warmth': warmth, 'hunger': hunger, 'anxiety':anxiety, 'friends':friends,'wood':wood,'status':status,'food':food, 'player': player_name, 'event': event, 'stranger': stranger, 'pet':pet }
+    dictIn['pet'] = pet
+    # Value to allow for pet names
+    try:
+        dictIn['petname']
+        petname = list(petname)
+    except KeyError:
+        petname = []
+    dictIn['petname'] = petname
+    return dictIn
 
 def value_relationships(dictIn):
     health = int(dictIn['health'])
@@ -187,7 +206,19 @@ def value_relationships(dictIn):
         if anxiety < 10:
             anxiety = 10
 
-    return {'health':health,'hunger':hunger,'warmth':warmth,'anxiety':anxiety,'friends':friends,'wood':wood,'food':food,'status':status,'player':name,'event':event,'stranger':stranger, 'pet':pet}
+    int(dictIn['health']) = health
+    int(dictIn['hunger']) = hunger
+    int(dictIn['warmth']) = warmth
+    int(dictIn['anxiety']) = anxiety
+    int(dictIn['friends']) = friends
+    int(dictIn['wood']) = wood
+    int(dictIn['food']) = food
+    dictIn['status'] = status
+    dictIn['player'] = name
+    dictIn['event'] = event
+    int(dictIn['stranger']) = stranger
+    int(dictIn['pet']) = pet
+    return dictIn
 
 def pretty_values(dictIn):
     print("Health: " + str(dictIn['health']) + "%")
